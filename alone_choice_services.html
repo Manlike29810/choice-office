@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مكتب الاختيار الوحيد للخدمات العامة</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&family=Noto+Sans+Bengali:wght@400;700&family=Noto+Sans+Devanagari:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #1a2a3a;
+            --accent-color: #f39c12;
+            --bg-light: #f4f7f6;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Cairo', sans-serif; }
+        body { background-color: #fff; color: #333; line-height: 1.6; transition: all 0.3s ease; }
+        .container { width: 90%; max-width: 1200px; margin: auto; }
+
+        /* شريط اختيار اللغة */
+        .lang-switcher {
+            background: #0d151d;
+            padding: 10px 0;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        .lang-btn {
+            background: #2c3e50;
+            color: white;
+            border: none;
+            padding: 5px 15px;
+            cursor: pointer;
+            border-radius: 4px;
+            font-size: 14px;
+            transition: 0.3s;
+        }
+        .lang-btn:hover, .lang-btn.active { background: var(--accent-color); }
+
+        /* الهيدر */
+        header { background: var(--primary-color); color: white; padding: 20px 0; border-bottom: 3px solid var(--accent-color); }
+        header .container { display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-size: 24px; font-weight: bold; color: var(--accent-color); }
+
+        /* القسم الرئيسي */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1589829545856-d10d557cf95f?q=80&w=2070&auto=format&fit=crop');
+            background-size: cover; background-position: center;
+            height: 400px; color: white; text-align: center;
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
+        }
+        .hero h1 { font-size: 3rem; margin-bottom: 10px; }
+
+        /* الخدمات */
+        .services { padding: 60px 0; text-align: center; }
+        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin-top: 30px; }
+        .card { background: var(--bg-light); padding: 30px; border-radius: 10px; transition: 0.3s; border-bottom: 4px solid transparent; }
+        .card:hover { transform: translateY(-5px); border-color: var(--accent-color); box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
+        .card h3 { color: var(--primary-color); margin-bottom: 15px; }
+
+        /* التواصل */
+        .contact { background: var(--primary-color); color: white; padding: 50px 0; text-align: center; }
+        .btn-map { background: var(--accent-color); color: white; padding: 12px 25px; text-decoration: none; border-radius: 5px; display: inline-block; margin-top: 20px; font-weight: bold; }
+
+        footer { background: #0d151d; color: #aaa; text-align: center; padding: 20px 0; font-size: 14px; }
+
+        /* اللغات الآسيوية تحتاج خطوطاً مختلفة أحياناً */
+        [lang="hi"], [lang="bn"] { font-family: 'Noto Sans Devanagari', 'Noto Sans Bengali', sans-serif; }
+    </style>
+</head>
+<body>
+
+    <div class="lang-switcher">
+        <button class="lang-btn active" onclick="changeLang('ar')">العربية</button>
+        <button class="lang-btn" onclick="changeLang('en')">English</button>
+        <button class="lang-btn" onclick="changeLang('ur')">اردو (PK)</button>
+        <button class="lang-btn" onclick="changeLang('bn')">বাংলা (BD)</button>
+        <button class="lang-btn" onclick="changeLang('hi')">हिन्दी (IN)</button>
+    </div>
+
+    <header>
+        <div class="container">
+            <div class="logo" id="logoText">مكتب الاختيار الوحيد</div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <h1 id="heroTitle">مكتب الاختيار الوحيد</h1>
+        <p id="heroDesc">خياركم الأول للخدمات العامة والتعقيب في عنيزة</p>
+    </section>
+
+    <section class="services container">
+        <h2 id="serviceTitle">خدماتنا المميزة</h2>
+        <div class="services-grid">
+            <div class="card">
+                <h3 id="s1Title">الخدمات الإلكترونية</h3>
+                <p id="s1Desc">إنجاز معاملات أبشر، قوى، مدد، والتأمينات الاجتماعية.</p>
+            </div>
+            <div class="card">
+                <h3 id="s2Title">شؤون العمالة</h3>
+                <p id="s2Desc">تجديد الإقامة، إصدار التأشيرات، ونقل الكفالة.</p>
+            </div>
+            <div class="card">
+                <h3 id="s3Title">السجلات التجارية</h3>
+                <p id="s3Desc">فتح وتجديد السجلات التجارية وتراخيص البلدية.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact">
+        <div class="container">
+            <h2 id="contactTitle">تواصل معنا</h2>
+            <p id="addr">📍 القصيم - عنيزة - طريق الملك خالد</p>
+            <p>📞 +966 53 322 5799</p>
+            <a href="https://maps.google.com/?q=26.084128,43.984024" target="_blank" class="btn-map" id="mapBtn">فتح الموقع في الخريطة</a>
+        </div>
+    </section>
+
+    <footer>
+        <p id="footerText">© 2026 مكتب الاختيار الوحيد للخدمات العامة - جميع الحقوق محفوظة</p>
+    </footer>
+
+    <script>
+        const translations = {
+            ar: {
+                dir: "rtl",
+                logo: "مكتب الاختيار الوحيد",
+                heroTitle: "مكتب الاختيار الوحيد",
+                heroDesc: "خياركم الأول للخدمات العامة والتعقيب في عنيزة",
+                serviceTitle: "خدماتنا المميزة",
+                s1Title: "الخدمات الإلكترونية", s1Desc: "إنجاز معاملات أبشر، قوى، مدد، والتأمينات الاجتماعية.",
+                s2Title: "شؤون العمالة", s2Desc: "تجديد الإقامة، إصدار التأشيرات، ونقل الكفالة.",
+                s3Title: "السجلات التجارية", s3Desc: "فتح وتجديد السجلات التجارية وتراخيص البلدية.",
+                contactTitle: "تواصل معنا", addr: "📍 القصيم - عنيزة - طريق الملك خالد",
+                mapBtn: "فتح الموقع في الخريطة", footer: "© 2026 مكتب الاختيار الوحيد - جميع الحقوق محفوظة"
+            },
+            en: {
+                dir: "ltr",
+                logo: "The Only Choice Office",
+                heroTitle: "The Only Choice Office",
+                heroDesc: "Your first choice for public services and government relations in Unaizah.",
+                serviceTitle: "Our Services",
+                s1Title: "E-Services", s1Desc: "Handling Absher, Qiwa, Mudad, and Social Insurance platforms.",
+                s2Title: "Labor Affairs", s2Desc: "Iqama renewal, visa issuance, and sponsorship transfer.",
+                s3Title: "Commercial Services", s3Desc: "Issuing and renewing commercial registers and municipality licenses.",
+                contactTitle: "Contact Us", addr: "📍 Al Qassim - Unaizah - King Khalid Road",
+                mapBtn: "Open Location in Maps", footer: "© 2026 The Only Choice Office - All Rights Reserved"
+            },
+            ur: {
+                dir: "rtl",
+                logo: "الاختيار الوحید آفس",
+                heroTitle: "الاختيار الوحيد سروسز",
+                heroDesc: "عنیدہ میں تمام سرکاری خدمات اور ای سروسز کے لیے آپ کا پہلا انتخاب۔",
+                serviceTitle: "ہماری خدمات",
+                s1Title: "الیکٹرانک خدمات", s1Desc: "ابشر، قوی، مدد اور سوشل انشورنس کے تمام کام۔",
+                s2Title: "لیبر سروسز", s2Desc: "اقامہ کی تجدید، ویزا کا اجرا، اور کفالہ کی منتقلی۔",
+                s3Title: "تجارتی لائسنس", s3Desc: "کمرشل رجسٹریشن اور بلدیہ لائسنس کا اجرا اور تجدید۔",
+                contactTitle: "ہم سے رابطہ کریں", addr: "📍 القصیم - عنیزہ - کنگ خالد روڈ",
+                mapBtn: "نقشے پر مقام دیکھیں", footer: "© 2026 تمام حقوق محفوظ ہیں"
+            },
+            bn: {
+                dir: "ltr",
+                logo: "দ্য অনলি চয়েস অফিস",
+                heroTitle: "দ্য অনলি চয়েস সার্ভিসেস",
+                heroDesc: "উনাইজাহতে আপনার সমস্ত সরকারি এবং ই-পরিষেবার জন্য সেরা সমাধান।",
+                serviceTitle: "আমাদের সেবাসমূহ",
+                s1Title: "ই-পরিষেবা", s1Desc: "আবশার, কিওয়া, মুদাদ এবং সামাজিক বীমা সংক্রান্ত কাজ।",
+                s2Title: "শ্রম বিষয়ক", s2Desc: "ইকামা নবায়ন, ভিসা প্রদান এবং কফালা পরিবর্তন।",
+                s3Title: "ব্যবসায়িক সেবা", s3Desc: "বাণিজ্যিক নিবন্ধন এবং পৌরসভা লাইসেন্স নবায়ন।",
+                contactTitle: "যোগাযোগ করুন", addr: "📍 আল কাসিম - উনাইজাহ - কিং খালিদ রোড",
+                mapBtn: "ম্যাপে আমাদের দেখুন", footer: "© ২০২৬ সর্বস্বত্ব সংরক্ষিত"
+            },
+            hi: {
+                dir: "ltr",
+                logo: "द ओनली चॉइस ऑफिस",
+                heroTitle: "द ओनली चॉइस सर्विसेज",
+                heroDesc: "उनायज़ह में सभी सरकारी और ई-सेवाओं के लिए आपका विश्वसनीय साथी।",
+                serviceTitle: "हमारी सेवाएँ",
+                s1Title: "ई-सेवाएं", s1Desc: "अबशेर, किवा, मुदाद और सामाजिक बीमा से संबंधित कार्य।",
+                s2Title: "लेबर सर्विस", s2Desc: "इकामा नवीनीकरण, वीजा जारी करना और कफाला स्थानांतरण।",
+                s3Title: "व्यापार सेवाएँ", s3Desc: "वाणिज्यिक पंजीकरण और नगर पालिका लाइसेंस का नवीनीकरण।",
+                contactTitle: "संपर्क करें", addr: "📍 अल कासिम - उनायज़ह - किंग खालिद रोड",
+                mapBtn: "गूगल मैप्स पर देखें", footer: "© 2026 सर्वाधिकार सुरक्षित"
+            }
+        };
+
+        function changeLang(lang) {
+            const data = translations[lang];
+            document.documentElement.lang = lang;
+            document.documentElement.dir = data.dir;
+            
+            // تحديث النصوص
+            document.getElementById('logoText').innerText = data.logo;
+            document.getElementById('heroTitle').innerText = data.heroTitle;
+            document.getElementById('heroDesc').innerText = data.heroDesc;
+            document.getElementById('serviceTitle').innerText = data.serviceTitle;
+            document.getElementById('s1Title').innerText = data.s1Title;
+            document.getElementById('s1Desc').innerText = data.s1Desc;
+            document.getElementById('s2Title').innerText = data.s2Title;
+            document.getElementById('s2Desc').innerText = data.s2Desc;
+            document.getElementById('s3Title').innerText = data.s3Title;
+            document.getElementById('s3Desc').innerText = data.s3Desc;
+            document.getElementById('contactTitle').innerText = data.contactTitle;
+            document.getElementById('addr').innerText = data.addr;
+            document.getElementById('mapBtn').innerText = data.mapBtn;
+            document.getElementById('footerText').innerText = data.footer;
+
+            // تحديث نشاط الأزرار
+            document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+        }
+    </script>
+</body>
+</html>
