@@ -10,6 +10,7 @@
             --primary-color: #1a2a3a;
             --accent-color: #f39c12;
             --bg-light: #f4f7f6;
+            --whatsapp-green: #25D366;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Cairo', sans-serif; }
@@ -25,6 +26,9 @@
             justify-content: center;
             gap: 10px;
             flex-wrap: wrap;
+            position: sticky;
+            top: 0;
+            z-index: 1001;
         }
         .lang-btn {
             background: #2c3e50;
@@ -50,7 +54,7 @@
             height: 400px; color: white; text-align: center;
             display: flex; flex-direction: column; justify-content: center; align-items: center;
         }
-        .hero h1 { font-size: 3rem; margin-bottom: 10px; }
+        .hero h1 { font-size: 2.5rem; margin-bottom: 10px; }
 
         /* الخدمات */
         .services { padding: 60px 0; text-align: center; }
@@ -61,11 +65,40 @@
 
         /* التواصل */
         .contact { background: var(--primary-color); color: white; padding: 50px 0; text-align: center; }
-        .btn-map { background: var(--accent-color); color: white; padding: 12px 25px; text-decoration: none; border-radius: 5px; display: inline-block; margin-top: 20px; font-weight: bold; }
+        .contact-title { margin-bottom: 20px; font-size: 28px; }
+        
+        /* روابط الواتساب بتنسيق أزرار */
+        .whatsapp-section { margin: 30px 0; }
+        .whatsapp-links { list-style: none; padding: 0; display: flex; flex-direction: column; align-items: center; gap: 15px; }
+        .wa-btn {
+            text-decoration: none;
+            color: var(--whatsapp-green);
+            background: transparent;
+            font-weight: bold;
+            font-size: 18px;
+            display: inline-flex;
+            align-items: center;
+            border: 2px solid var(--whatsapp-green);
+            padding: 12px 25px;
+            border-radius: 50px;
+            transition: 0.3s;
+            width: 100%;
+            max-width: 400px;
+            justify-content: center;
+        }
+        .wa-btn:hover {
+            background-color: var(--whatsapp-green);
+            color: white !important;
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(37, 211, 102, 0.4);
+        }
+        .wa-btn span { margin-left: 10px; font-size: 22px; }
+
+        .btn-map { background: var(--accent-color); color: white; padding: 12px 25px; text-decoration: none; border-radius: 5px; display: inline-block; margin-top: 20px; font-weight: bold; transition: 0.3s; }
+        .btn-map:hover { background: #e67e22; transform: translateY(-2px); }
 
         footer { background: #0d151d; color: #aaa; text-align: center; padding: 20px 0; font-size: 14px; }
 
-        /* اللغات الآسيوية تحتاج خطوطاً مختلفة أحياناً */
         [lang="hi"], [lang="bn"] { font-family: 'Noto Sans Devanagari', 'Noto Sans Bengali', sans-serif; }
     </style>
 </head>
@@ -110,11 +143,22 @@
 
     <section class="contact">
         <div class="container">
-            <h2 id="contactTitle">تواصل معنا</h2>
+            <h2 id="contactTitle" class="contact-title">تواصل معنا</h2>
             <p id="addr">📍 القصيم - عنيزة - طريق الملك خالد</p>
-            <a href="https://wa.me/message/VXL5T47L2UEVO1" الاستفسار عن خدماتكم  +966 556647370>تواصل معنا</a>
-            <a href="https://wa.me/message/S7PR6U3IO3MPL1 الاستفسار عن خدماتكم 53 322 5799">تواصل معنا</a>
-            <a href="https://wa.me الاستفسار عن خدماتكم 508114255">تواصل معنا</a>
+            
+            <div class="whatsapp-section">
+                <div class="whatsapp-links">
+                    <a href="https://wa.me/message/VXL5T47L2UEVO1" target="_blank" class="wa-btn" id="waAdmin">
+                        <span>💬</span> مراسلة الإدارة
+                    </a>
+                    <a href="https://wa.me/message/S7PR6U3IO3MPL1" target="_blank" class="wa-btn" id="waMustafa">
+                        <span>💬</span> مراسلة أ/ مصطفى
+                    </a>
+                    <a href="https://wa.me/966508114255" target="_blank" class="wa-btn" id="waGeneral">
+                        <span>💬</span> استفسارات عامة
+                    </a>
+                </div>
+            </div>
 
             <a href="https://maps.app.goo.gl/19KAM3bEELwQ3KSH6" target="_blank" class="btn-map" id="mapBtn">فتح الموقع في الخريطة</a>
         </div>
@@ -136,55 +180,60 @@
                 s2Title: "شؤون العمالة", s2Desc: "تجديد الإقامة، إصدار التأشيرات، ونقل الكفالة.",
                 s3Title: "السجلات التجارية", s3Desc: "فتح وتجديد السجلات التجارية وتراخيص البلدية.",
                 contactTitle: "تواصل معنا", addr: "📍 القصيم - عنيزة - طريق الملك خالد",
+                waAdmin: "💬 مراسلة الإدارة", waMustafa: "💬 مراسلة أ/ مصطفى", waGeneral: "💬 استفسارات عامة",
                 mapBtn: "فتح الموقع في الخريطة", footer: "© 2026 مكتب الاختيار الوحيد - جميع الحقوق محفوظة"
             },
             en: {
                 dir: "ltr",
                 logo: "The Only Choice Office",
                 heroTitle: "The Only Choice Office",
-                heroDesc: "Your first choice for public services and government relations in Unaizah.",
+                heroDesc: "Your first choice for public services in Unaizah.",
                 serviceTitle: "Our Services",
-                s1Title: "E-Services", s1Desc: "Handling Absher, Qiwa, Mudad, and Social Insurance platforms.",
+                s1Title: "E-Services", s1Desc: "Absher, Qiwa, Mudad, and Social Insurance services.",
                 s2Title: "Labor Affairs", s2Desc: "Iqama renewal, visa issuance, and sponsorship transfer.",
-                s3Title: "Commercial Services", s3Desc: "Issuing and renewing commercial registers and municipality licenses.",
+                s3Title: "Business Services", s3Desc: "Commercial registration and municipality licenses.",
                 contactTitle: "Contact Us", addr: "📍 Al Qassim - Unaizah - King Khalid Road",
-                mapBtn: "Open Location in Maps", footer: "© 2026 The Only Choice Office - All Rights Reserved"
+                waAdmin: "💬 Message Management", waMustafa: "💬 Message Mr. Mustafa", waGeneral: "💬 General Inquiries",
+                mapBtn: "Open Map Location", footer: "© 2026 The Only Choice Office - All Rights Reserved"
             },
             ur: {
                 dir: "rtl",
                 logo: "الاختيار الوحید آفس",
                 heroTitle: "الاختيار الوحيد سروسز",
-                heroDesc: "عنیدہ میں تمام سرکاری خدمات اور ای سروسز کے لیے آپ کا پہلا انتخاب۔",
+                heroDesc: "عنیدہ میں تمام سرکاری خدمات کے لیے آپ کا پہلا انتخاب۔",
                 serviceTitle: "ہماری خدمات",
-                s1Title: "الیکٹرانک خدمات", s1Desc: "ابشر، قوی، مدد اور سوشل انشورنس کے تمام کام۔",
-                s2Title: "لیبر سروسز", s2Desc: "اقامہ کی تجدید، ویزا کا اجرا، اور کفالہ کی منتقلی۔",
-                s3Title: "تجارتی لائسنس", s3Desc: "کمرشل رجسٹریشن اور بلدیہ لائسنس کا اجرا اور تجدید۔",
+                s1Title: "الیکٹرانک خدمات", s1Desc: "ابشر، قوی، مدد اور سوشل انشورنس۔",
+                s2Title: "لیبر سروسز", s2Desc: "اقامہ کی تجدید، ویزا کا اجرا، اور کفالہ۔",
+                s3Title: "تجارتی لائسنس", s3Desc: "کمرشل رجسٹریشن اور بلدیہ لائسنس۔",
                 contactTitle: "ہم سے رابطہ کریں", addr: "📍 القصیم - عنیزہ - کنگ خالد روڈ",
-                mapBtn: "نقشے پر مقام دیکھیں", footer: "© 2026 تمام حقوق محفوظ ہیں"
+                waAdmin: "💬 انتظامیہ سے بات کریں", waMustafa: "💬 جناب مصطفی سے بات کریں", waGeneral: "💬 عام پوچھ گچھ",
+                mapBtn: "نقشے پر دیکھیں", footer: "© 2026 تمام حقوق محفوظ ہیں"
             },
             bn: {
                 dir: "ltr",
                 logo: "দ্য অনলি চয়েস অফিস",
                 heroTitle: "দ্য অনলি চয়েস সার্ভিসেস",
-                heroDesc: "উনাইজাহতে আপনার সমস্ত সরকারি এবং ই-পরিষেবার জন্য সেরা সমাধান।",
+                heroDesc: "উনাইজাহতে আপনার সমস্ত সরকারি সেবার সেরা সমাধান।",
                 serviceTitle: "আমাদের সেবাসমূহ",
-                s1Title: "ই-পরিষেবা", s1Desc: "আবশার, কিওয়া, মুদাদ এবং সামাজিক বীমা সংক্রান্ত কাজ।",
-                s2Title: "শ্রম বিষয়ক", s2Desc: "ইকামা নবায়ন, ভিসা প্রদান এবং কফালা পরিবর্তন।",
-                s3Title: "ব্যবসায়িক সেবা", s3Desc: "বাণিজ্যিক নিবন্ধন এবং পৌরসভা লাইসেন্স নবায়ন।",
+                s1Title: "ই-পরিষেবা", s1Desc: "আবশার, কিওয়া, মুদাদ এবং বীমা সংক্রান্ত কাজ।",
+                s2Title: "শ্রম বিষয়ক", s2Desc: "ইকামা নবায়ন এবং ভিসা প্রদান।",
+                s3Title: "ব্যবসায়িক সেবা", s3Desc: "বাণিজ্যিক নিবন্ধন এবং পৌরসভা লাইসেন্স।",
                 contactTitle: "যোগাযোগ করুন", addr: "📍 আল কাসিম - উনাইজাহ - কিং খালিদ রোড",
-                mapBtn: "ম্যাপে আমাদের দেখুন", footer: "© ২০২৬ সর্বস্বত্ব সংরক্ষিত"
+                waAdmin: "💬 ম্যানেজমেন্টের সাথে কথা বলুন", waMustafa: "💬 জনাব মোস্তফার সাথে কথা বলুন", waGeneral: "💬 সাধারণ জিজ্ঞাসা",
+                mapBtn: "ম্যাপে দেখুন", footer: "© ২০২৬ সর্বস্বত্ব সংরক্ষিত"
             },
             hi: {
                 dir: "ltr",
                 logo: "द ओनली चॉइस ऑफिस",
                 heroTitle: "द ओनली चॉइस सर्विसेज",
-                heroDesc: "उनायज़ह में सभी सरकारी और ई-सेवाओं के लिए आपका विश्वसनीय साथी।",
+                heroDesc: "उनायज़ह में सभी सरकारी सेवाओं के लिए आपका विश्वसनीय साथी।",
                 serviceTitle: "हमारी सेवाएँ",
-                s1Title: "ई-सेवाएं", s1Desc: "अबशेर, किवा, मुदाद और सामाजिक बीमा से संबंधित कार्य।",
-                s2Title: "लेबर सर्विस", s2Desc: "इकामा नवीनीकरण, वीजा जारी करना और कफाला स्थानांतरण।",
-                s3Title: "व्यापार सेवाएँ", s3Desc: "वाणिज्यिक पंजीकरण और नगर पालिका लाइसेंस का नवीनीकरण।",
+                s1Title: "ई-सेवाएं", s1Desc: "अबशेर, किवा, मुदाद और बीमा कार्य।",
+                s2Title: "लेबर सर्विस", s2Desc: "इकामा नवीनीकरण और वीजा सेवाएँ।",
+                s3Title: "व्यापार सेवाएँ", s3Desc: "पंजीकरण और नगर पालिका लाइसेंस।",
                 contactTitle: "संपर्क करें", addr: "📍 अल कासिम - उनायज़ह - किंग खालिद रोड",
-                mapBtn: "गूगल मैप्स पर देखें", footer: "© 2026 सर्वाधिकार सुरक्षित"
+                waAdmin: "💬 प्रबंधन से संपर्क करें", waMustafa: "💬 श्री मुस्तफा से संपर्क करें", waGeneral: "💬 सामान्य पूछताछ",
+                mapBtn: "मैप पर देखें", footer: "© 2026 सर्वाधिकार सुरक्षित"
             }
         };
 
@@ -193,7 +242,6 @@
             document.documentElement.lang = lang;
             document.documentElement.dir = data.dir;
             
-            // تحديث النصوص
             document.getElementById('logoText').innerText = data.logo;
             document.getElementById('heroTitle').innerText = data.heroTitle;
             document.getElementById('heroDesc').innerText = data.heroDesc;
@@ -206,10 +254,12 @@
             document.getElementById('s3Desc').innerText = data.s3Desc;
             document.getElementById('contactTitle').innerText = data.contactTitle;
             document.getElementById('addr').innerText = data.addr;
+            document.getElementById('waAdmin').innerHTML = `<span>💬</span> ${data.waAdmin}`;
+            document.getElementById('waMustafa').innerHTML = `<span>💬</span> ${data.waMustafa}`;
+            document.getElementById('waGeneral').innerHTML = `<span>💬</span> ${data.waGeneral}`;
             document.getElementById('mapBtn').innerText = data.mapBtn;
             document.getElementById('footerText').innerText = data.footer;
 
-            // تحديث نشاط الأزرار
             document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
             event.target.classList.add('active');
         }
